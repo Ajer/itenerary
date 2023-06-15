@@ -62,7 +62,7 @@ input:focus{
   border-radius:5px;
 }
 
-.btn_corr{
+.btn_corr,.label_corr{
   margin-left:10px;
 }
 

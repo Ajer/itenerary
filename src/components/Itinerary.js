@@ -6,7 +6,6 @@ export default function Itinerary(){
         <div className="itinerary_container">
             <Header className={"header_container"} text={'Prague'} />
             <AddTask/>
-            {/* <Task /> */}
         </div>
     )
 }
