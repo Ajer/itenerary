@@ -1,5 +1,5 @@
 import Header from './Header';
-import AddTask from './AddTask';
+import AddTask from './GUIList';
 
 export default function Itinerary(){
     return(
