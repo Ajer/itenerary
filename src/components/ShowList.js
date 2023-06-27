@@ -21,7 +21,7 @@ export default function ShowList({tasks,handleEditName,handleDeleteTask,handleEd
       } */
 
     let listItems = tasks.map(tsk =>
-       <Task key={tsk.id} editing={tsk.editing} taskLabel={tsk.name} handleDeleteTask={()=>handleDeleteTask(tsk.id)} handleEditName={()=>handleEditName(tsk.id)} 
+       <Task key={tsk.id} editing={tsk.editing} checked={tsk.checked} taskLabel={tsk.name} handleDeleteTask={()=>handleDeleteTask(tsk.id)} handleEditName={()=>handleEditName(tsk.id)} 
        handleEditSave={()=>handleEditSave(tsk.id)} handleEditCancel={()=>handleEditCancel(tsk.id)} />
     );
 

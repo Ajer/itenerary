@@ -1,6 +1,5 @@
 import {taskList} from './taskList.js'
 import {useState,useEffect} from 'react';
-import Task from './Task';
 import ShowList from './ShowList';
 
 
@@ -16,25 +15,38 @@ export default function GUIList()
 
     const [edit,setEdit] = useState(false);
 
+    const [addInputClsName,setAddInputClsName] = useState("add_input add_input_normal");
+
 
     function handleAddTask()
     {
-        let n = nextId + 1;
+          let n = nextId + 1;
 
-        alert('n=' + n);
+          alert('n=' + n);
 
-        setTasks([      /* add a task (object) at the end of the list*/
+          setTasks([      /* add a task (object) at the end of the list*/
           ...tasks,
-          {
-            id:n,
-            name:theText,
-            editing:false
-          }
-        ])
+           {
+             id:n,
+             name:theText,
+             editing:false,
+             checked:false
+           }
+         ])
         
-        setNextId(n);
+         setNextId(n);
 
-        setTheText('');
+         setTheText('');
+      
+    }
+
+    function checkCharacter(event)
+    {
+      if (event.target.value==='<')
+      {
+        return false;
+      }
+      return true;
     }
     
     useEffect(() => {  
@@ -49,7 +61,13 @@ export default function GUIList()
 
 
     function handleChange(event){      /* every text-character is gradually saved as a word in 'theText'*/
-      setTheText(event.target.value);
+       /* if (checkCharacter(event))
+       { */
+          setTheText(event.target.value);
+       /* }
+       else{
+         setAddInputClsName("add_input add_input_error");
+       } */
     }
 
     function handleDeleteTask(id)
@@ -94,7 +112,8 @@ export default function GUIList()
            setTasks([
              {id:theItem[0].id,
               name:theItem[0].name,
-              editing:true
+              editing:true,
+              checked:theItem[0].checked
              }]
             ); 
 
@@ -123,7 +142,7 @@ export default function GUIList()
               return oTsk;             /*return it*/
             }
             else{
-              return {id:oTsk.id,name:theText,editing:false};   /* else return a new object where name is 'theText' and  editing=false */
+              return {id:oTsk.id,name:theText,editing:false,checked:oTsk.checked};   /* else return a new object where name is 'theText' and  editing=false */
             }
            })
           );
@@ -171,9 +190,14 @@ export default function GUIList()
 
     return(
         <div className='task_container'>
-           <input type="text" id="addTask" name="addTask" onChange={handleChange} className="add_input" placeholder='Add Task' value={theText} />
-           {!edit && <button onClick={handleAddTask} className="button btn_corr">Add</button>}
+
+
+           <input type="text" id="addTask" name="addTask" onChange={handleChange} className={addInputClsName} placeholder='Add Task' value={theText} />
+           {!edit && <button onClick={handleAddTask} className="button btn_corr">Add</button>}         
+           
            <ShowList tasks={tasks} handleDeleteTask={handleDeleteTask} handleEditName={handleEditName} handleEditSave={handleEditSave} handleEditCancel={handleEditCancel} />
+          
+           <div><button className="button help_btn_class btn_corr_top">Help</button></div>
         </div>
     );
 }

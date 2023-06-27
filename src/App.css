@@ -12,7 +12,7 @@
 
 .App-header {
   /* background:linear-gradient(135deg,rgb(194, 26, 152),#f80759); */
-  background:linear-gradient(135deg,rgb(63, 166, 250),#d2e7f5);
+  background:linear-gradient(135deg,rgb(63, 166, 250),#7c0812); 
 
   min-height: 100vh;
   display: flex;
@@ -29,11 +29,12 @@
 
 .itinerary_container{
   background-color:white;
-  width:400px;
+  width:450px;
   height:700px;
   border:2px solid white;
   border-radius:8px;
   color:black;
+  overflow-y:scroll;
 }
 
 .header_container{
@@ -51,8 +52,19 @@ input:focus{
   width:250px;
   height:30px;
   font-size:18px;
+}
+
+.add_input_normal{
+  background-color:white;
   border:1px solid gray;
 }
+
+.add_input_error{
+  background-color:#f39fa6;
+  color:#7c0812; 
+  border:1px solid red;
+}
+
 
 .button{
   /* width:50px; */
@@ -66,6 +78,12 @@ input:focus{
   margin-left:10px;
 }
 
+.btn_corr_top{
+  margin-top:10px;
+}
+
+
+
 .task_container{
   /* padding-left:-100px; */
 
@@ -76,6 +94,16 @@ input:focus{
 
 .task{
   margin-top:10px;
+}
+
+
+.help_btn_class{
+  /* height:25px; */
+  background-color: cornflowerblue;
+  color:white;
+ /*  font-size: 12px;
+  border:1px solid gray;
+  border-radius:5px; */
 }
 
 /* label{
