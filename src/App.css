@@ -13,7 +13,6 @@
 .App-header {
   /* background:linear-gradient(135deg,rgb(194, 26, 152),#f80759); */
   background:linear-gradient(135deg,rgb(63, 166, 250),#7c0812); 
-
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,30 +27,100 @@
 }
 
 .itinerary_container{
+  margin-top:15px;
+  margin-bottom:10px;
+  padding-top:40px;
+  padding-bottom:20px;
+  padding-left:0px;
+  padding-right:25px;
   background-color:white;
-  width:450px;
-  height:700px;
+  width:75%;     /*450px*/
+  height:100%;       /*700px*/
+  min-height:570px;
+  max-width: 800px;
   border:2px solid white;
   border-radius:8px;
   color:black;
   overflow-y:scroll;
 }
 
-.header_container{
-  margin-top:30px;
+@media only screen and (min-width:430px)
+{
+    .itinerary_container{
+      width:67%;
+    }
 }
 
 
+@media only screen and (min-width:550px)
+{
+    .itinerary_container{
+      width:63%;
+    }
+}
+
+@media only screen and (min-width:635px)
+{
+    .itinerary_container{
+      width:60%;
+    }
+}
+
+
+
+@media only screen and (min-width:675px)
+{
+    .itinerary_container{
+      width:55%;
+    }
+}
+
+@media only screen and (min-width:768px)
+{
+    .itinerary_container{
+      width:52%;
+    }
+}
+
+@media only screen and (min-width:850px)
+{
+    .itinerary_container{
+      width:55%;
+    }
+}
+
+.header_container{
+  /* margin-bottom:20px; */
+  /* margin-left:20px; */
+  /* display:inline; */
+  text-align: center;
+}
+
+.row_header
+{
+    margin-left:-30px;
+    display:inline; 
+    /* flex-direction:row;
+    justify-content:left; */
+}
+
+div.row_header>*{
+  vertical-align:middle;
+}
+
+input{
+   border-radius:3px;
+}
 
 input:focus{
   outline: none;
-  border-radius:3px;
 }
 
 .add_input{
-  width:250px;
+  width:70%;   /*250px*/
   height:30px;
   font-size:18px;
+  margin-top:10px;
 }
 
 .add_input_normal{
@@ -60,21 +129,20 @@ input:focus{
 }
 
 .add_input_error{
-  background-color:#f39fa6;
-  color:#7c0812; 
-  border:1px solid red;
+  background-color:#f7eced;
+  color:#b60816; 
+  border:1px solid #b60816;
 }
 
 
 .button{
-  /* width:50px; */
   height:30px;
   font-size:18px;  
   border:1px solid gray;
   border-radius:5px;
 }
 
-.btn_corr,.label_corr{
+.btn_corr{ /*.label_corr{*/
   margin-left:10px;
 }
 
@@ -83,39 +151,35 @@ input:focus{
 }
 
 
-
 .task_container{
-  /* padding-left:-100px; */
-
-  text-align:left;
-  margin-left:45px;
+  text-align:left; 
+  margin-left:30px; 
   font-size: 18px;
 }
 
 .task{
+  /* text-align:left; */
   margin-top:10px;
+  border: 1px solid lightgrey;
+  border-radius:4px;
+  padding:5px;
+  margin-bottom:10px;
 }
 
 
 .help_btn_class{
-  /* height:25px; */
-  background-color: cornflowerblue;
+  margin-bottom:0px;
+  height:27px;
+  background-color:dimgray;
   color:white;
- /*  font-size: 12px;
-  border:1px solid gray;
+  display:inline;
+  font-size: 12px;
+  width:80px;
+  /* margin-bottom:10px; */
+  /*border:1px solid gray;
   border-radius:5px; */
 }
 
 /* label{
   font-size:18px;
-} */
-
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 } */

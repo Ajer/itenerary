@@ -1,6 +1,7 @@
 import {taskList} from './taskList.js'
 import {useState,useEffect} from 'react';
 import ShowList from './ShowList';
+import DOMPurify from 'dompurify';
 
 
 export default function GUIList()
@@ -15,14 +16,33 @@ export default function GUIList()
 
     const [edit,setEdit] = useState(false);
 
+    const [error,setError] = useState(false);
+
     const [addInputClsName,setAddInputClsName] = useState("add_input add_input_normal");
 
 
     function handleAddTask()
     {
+
+        const isValid = theText.trim() !== '' && theText!==undefined && !error;
+
+        if (isValid)
+        {
+          
+        
           let n = nextId + 1;
 
-          alert('n=' + n);
+          /*DOMPurify.setConfig({
+            IN_PLACE: true, // In place mode for faster sanitization,
+            ALLOWED_TAGS:['b','i'], // Only allow tags specified in the whitelist above
+            ADD_ATTR: ['target'] // Allow elements with the target attribute
+          })*/
+
+          //let txt = DOMPurify.sanitize(theText,{ sanitize: true });
+          //alert(txt);
+
+
+          // alert('n=' + n);
 
           setTasks([      /* add a task (object) at the end of the list*/
           ...tasks,
@@ -32,21 +52,28 @@ export default function GUIList()
              editing:false,
              checked:false
            }
-         ])
-        
+         ])        
          setNextId(n);
-
          setTheText('');
-      
+        }
+        else if (error){
+          setTheText('');
+          setError(false);
+          setAddInputClsName("add_input add_input_normal");
+        }     
     }
 
-    function checkCharacter(event)
+    function checkCharacters(event)
     {
-      if (event.target.value==='<')
+      if (event.target.value.includes('<')||event.target.value.includes('>')||event.target.value.includes('&'))
+      //event.target.value.includes('')||event.target.value.includes(' '))
       {
         return false;
       }
-      return true;
+      else
+      {
+        return true;
+      }
     }
     
     useEffect(() => {  
@@ -59,20 +86,38 @@ export default function GUIList()
       setNextId(n);
     }, []); 
 
+     function handleClick()
+     {
+         if (error)
+         {
+           setTheText('');
+           setError(false);
+           setAddInputClsName("add_input add_input_normal");
+         }
+     }
 
     function handleChange(event){      /* every text-character is gradually saved as a word in 'theText'*/
-       /* if (checkCharacter(event))
-       { */
+
+     if (!error)  
+     {
+       if (checkCharacters(event))
+       {
           setTheText(event.target.value);
-       /* }
-       else{
+          /* setAddInputClsName("add_input add_input_normal"); */
+        }
+       else
+       {
+        //  alert('error');
+         setTheText('Invalid character \'' + event.target.value + '\'');
+         setError(true);
          setAddInputClsName("add_input add_input_error");
-       } */
+       }
+     }
     }
 
     function handleDeleteTask(id)
     {
-        alert(id);
+        // alert(id);
 
         setTasks(
            tasks.filter(elem=>    /* keep every task but where elem.id===id */
@@ -80,12 +125,12 @@ export default function GUIList()
            )
         )
 
-        alert('delete');
+        // alert('delete');
      }
 
      function handleEditName(id)  
      {
-          alert(id);
+          // alert(id);
 
           setOriginalTasks([...tasks]);
 
@@ -97,17 +142,17 @@ export default function GUIList()
             }
           });
 
-          alert(n);
+          // alert(n);
 
           setTheText(n);
 
-          alert('edit');
+          // alert('edit');
 
            let theItem = tasks.filter(tsk =>   // ny lista med 1 task (object)
                (tsk.id===id)
            );  
         
-           alert(theItem[0].name);
+          //  alert(theItem[0].name);
 
            setTasks([
              {id:theItem[0].id,
@@ -134,7 +179,7 @@ export default function GUIList()
  
      function handleEditSave(id)
      {
-          alert('save');
+          // alert('save');
 
           setTasks(originalTasks.map(oTsk=>{   /* for every task */
             if (oTsk.id!==id)          /*if task is not the one with tsk.id===id*/
@@ -153,7 +198,7 @@ export default function GUIList()
      
      function handleEditCancel(id)
      {
-         alert('cancel');
+        //  alert('cancel');
 
          setTasks(
             [...originalTasks]
@@ -173,10 +218,10 @@ export default function GUIList()
         setEdit(false);
      }
 
-     function removeElement(htmlId)
-     {
-      document.getElementById(htmlId).style.display = "none";
-     }
+    /*  function removeElement(htmlId)
+      {
+       document.getElementById(htmlId).style.display = "none";
+      } */
 
      /* function updateSquares(index,cpy){
       setSquares(elems => {
@@ -191,13 +236,11 @@ export default function GUIList()
     return(
         <div className='task_container'>
 
-
-           <input type="text" id="addTask" name="addTask" onChange={handleChange} className={addInputClsName} placeholder='Add Task' value={theText} />
+           <input type="text" id="addTask" name="addTask" onClick={handleClick} onChange={handleChange} className={addInputClsName} placeholder='Add Task' value={theText} />
            {!edit && <button onClick={handleAddTask} className="button btn_corr">Add</button>}         
            
-           <ShowList tasks={tasks} handleDeleteTask={handleDeleteTask} handleEditName={handleEditName} handleEditSave={handleEditSave} handleEditCancel={handleEditCancel} />
-          
-           <div><button className="button help_btn_class btn_corr_top">Help</button></div>
+           <ShowList tasks={tasks} handleDeleteTask={handleDeleteTask} handleEditName={handleEditName} handleEditSave={handleEditSave} handleEditCancel={handleEditCancel} error={error} />
+    
         </div>
     );
 }

@@ -3,7 +3,7 @@ export const taskList = [
        id:0,
        name:'Go to Kafka Museum',
        editing:false,
-       checked:false
+       checked:true
     },
     {
         id:1,
