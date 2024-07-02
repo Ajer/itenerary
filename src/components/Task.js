@@ -2,8 +2,10 @@ export default function Task({editing,checked,taskLabel,handleEditName,handleDel
 {
    let src = (checked) ? require('../check_30.png'): require('../goTo3030.png');
 
+   let task_class = (editing) ? 'task_edit':'task';   {/* use light-green background when editing*/}
+   
    return(
-    <div className='task'>
+    <div className={task_class}>
        {/* <input type='checkbox' value='tsk_chkBox' name='tsk_chkBox'/> */}
 
        <img  src={src} value='tsk_chkBox'  name='tsk_chkBox' alt=''></img>    {/* src={require('../check-lg.svg').default */}
