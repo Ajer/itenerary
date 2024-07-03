@@ -1,7 +1,7 @@
 import Task from './Task';
 
 
-export default function ShowList({tasks,handleEditName,handleDeleteTask,handleEditSave,handleEditCancel,error})
+export default function ShowList({tasks,handleEditName,handleDeleteTask,handleEditSave,handleEditCancel,handleToggleChecked,error})
 {
      
 
@@ -22,7 +22,7 @@ export default function ShowList({tasks,handleEditName,handleDeleteTask,handleEd
 
     let listItems = tasks.map(tsk =>
        <Task key={tsk.id} editing={tsk.editing} checked={tsk.checked} taskLabel={tsk.name} handleDeleteTask={()=>handleDeleteTask(tsk.id)} handleEditName={()=>handleEditName(tsk.id)} 
-       handleEditSave={()=>handleEditSave(tsk.id)} handleEditCancel={()=>handleEditCancel(tsk.id)} error={error} />
+       handleEditSave={()=>handleEditSave(tsk.id)} handleEditCancel={()=>handleEditCancel(tsk.id)} handleToggleChecked={()=>handleToggleChecked(tsk.id)} error={error} />
     );
 
     return (

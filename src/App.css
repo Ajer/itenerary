@@ -52,6 +52,34 @@
   font-size: 18px;
 }
 
+.button{
+  height:30px;
+  font-size:18px;  
+  border:1px solid gray;
+  border-radius:5px;
+  background-color:white;
+  color:gray;
+}
+
+@media only screen and (max-width:295px)
+{
+  .button{
+    word-break:break-all;
+    word-wrap:break-word;
+    height:100%;
+  }
+}
+
+@media only screen and (min-width:296px)
+{
+  .button{
+    word-break:normal;
+    word-wrap:normal;
+    height:30px;
+  }
+}
+
+
 @media only screen and (min-width:430px)
 {
     .itinerary_container{
@@ -165,15 +193,7 @@ input:focus{
 }
 
 
-.button{
-  height:30px;
-  font-size:18px;  
-  border:1px solid gray;
-  border-radius:5px;
 
-  background-color:white;
-  color:gray;
-}
 
 .btn_corr{ /*.label_corr{*/
   margin-left:10px;

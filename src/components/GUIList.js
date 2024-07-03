@@ -17,6 +17,8 @@ export default function GUIList({childToParent})
 
     const [edit,setEdit] = useState(false);
 
+    const [checkChanged,setCheckChanged] = useState(false);
+
     const [error,setError] = useState(false);
 
     const [addInputClsName,setAddInputClsName] = useState("add_input add_input_normal");
@@ -198,9 +200,26 @@ export default function GUIList({childToParent})
             }
           })
           );  */
-
      }
  
+    function handleToggleChecked(id)
+    {
+
+        let theItem = tasks.filter(tsk =>   // ny lista med 1 task (object)
+               (tsk.id===id)
+        );
+
+        setTasks([
+          {id:theItem[0].id,
+           name:theItem[0].name,
+           editing:true,
+           checked:!theItem[0].checked
+          }]
+         ); 
+
+         setCheckChanged(true);
+    }
+
      function handleEditSave(id)
      {
           // alert('save');
@@ -211,12 +230,20 @@ export default function GUIList({childToParent})
               return oTsk;             /*return it and leave it as it is*/
             }
             else{
-              return {id:oTsk.id,name:theText,editing:false,checked:oTsk.checked};   /* else return a new object where name is 'theText' and  editing=false */
+              if (checkChanged)
+              {
+                return {id:oTsk.id,name:theText,editing:false,checked:!oTsk.checked};   /* return a new object where name is 'theText' and  checked reversed */
+              }
+              else
+              {
+                return {id:oTsk.id,name:theText,editing:false,checked:oTsk.checked};   /*only name is changed*/ 
+              }
             }
            })
           );
           setTheText('');
           setEdit(false);
+          setCheckChanged(false);
           setAddInputClsName("add_input add_input_normal");
           childToParent(false);
      }
@@ -242,6 +269,7 @@ export default function GUIList({childToParent})
         ); */
         setTheText('');
         setEdit(false);
+        setCheckChanged(false);
         setAddInputClsName("add_input add_input_normal");
         childToParent(false);
      }
@@ -267,7 +295,7 @@ export default function GUIList({childToParent})
            <input type="text" id="addTask" name="addTask" onClick={handleClick} onChange={handleChange} className={addInputClsName} placeholder='Add Task' value={theText} />
            {!edit && <button onClick={handleAddTask} className="button btn_corr">Add</button>}         
            
-           <ShowList tasks={tasks} handleDeleteTask={handleDeleteTask} handleEditName={handleEditName} handleEditSave={handleEditSave} handleEditCancel={handleEditCancel} error={error} />
+           <ShowList tasks={tasks} handleDeleteTask={handleDeleteTask} handleEditName={handleEditName} handleEditSave={handleEditSave} handleEditCancel={handleEditCancel} handleToggleChecked={handleToggleChecked} error={error} />
     
         </div>
     );
