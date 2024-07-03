@@ -2,6 +2,7 @@ import {taskList} from './taskList.js'
 import {useState,useEffect} from 'react';
 import ShowList from './ShowList';
 import DOMPurify from 'dompurify';
+import Swal from 'sweetalert2';
 
 
 export default function GUIList()
@@ -119,13 +120,32 @@ export default function GUIList()
     {
         // alert(id);
 
-        setTasks(
-           tasks.filter(elem=>    /* keep every task but where elem.id===id */
-             elem.id!==id
-           )
-        )
+        Swal.fire({
+          title: "Are you sure you want to delete this item?",
+          text: "You won't be able to revert this!",
+          icon: "",
+          showCancelButton: true,
+          confirmButtonColor: "#d33", // "#3085d6"
+          cancelButtonColor: "#3085d6",
+          confirmButtonText: "Yes, delete !"
+        }).then((result) => {
+          if (result.isConfirmed) {
 
-        // alert('delete');
+            setTasks(
+              tasks.filter(elem=>    /* keep every task but where elem.id===id */
+                elem.id!==id
+              )
+           );
+
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          }
+        });
+
+        
      }
 
      function handleEditName(id)  

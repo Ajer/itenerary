@@ -1,8 +1,8 @@
 export default function Task({editing,checked,taskLabel,handleEditName,handleDeleteTask,handleEditSave,handleEditCancel,error}) 
 {
-   let src = (checked) ? require('../check_30.png'): require('../goTo3030.png');
+   let src = (checked) ? require('../check_30_1.png'): require('../goTo3030_1.png');
 
-   let task_class = (editing) ? 'task_edit':'task';   {/* use light-green background when editing*/}
+   let task_class = (editing) ? 'task_edit':'task';   /* use light-green background when editing*/
    
    return(
     <div className={task_class}>

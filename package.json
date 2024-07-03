@@ -15,11 +15,12 @@
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
+    "sweetalert2": "^11.6.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "set \"CI=false\" && react-scripts build",
     "test": "react-scripts test",
