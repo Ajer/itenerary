@@ -5,7 +5,7 @@ import DOMPurify from 'dompurify';
 import Swal from 'sweetalert2';
 
 
-export default function GUIList()
+export default function GUIList({childToParent})
 {
     const [theText,setTheText] = useState("");
 
@@ -183,6 +183,8 @@ export default function GUIList()
             ); 
 
            setEdit(true);
+
+           childToParent(true);
  
           /* setTasks(tasks.map(tsk=>{
             if (tsk.id!==id)
@@ -213,6 +215,7 @@ export default function GUIList()
           );
           setTheText('');
           setEdit(false);
+          childToParent(false);
      }
      
      
@@ -236,6 +239,7 @@ export default function GUIList()
         ); */
         setTheText('');
         setEdit(false);
+        childToParent(false);
      }
 
     /*  function removeElement(htmlId)

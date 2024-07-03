@@ -44,10 +44,33 @@
   overflow-y:scroll;
 }
 
+.header_container{
+  /* margin-bottom:20px; */
+   margin-left:20px;
+  /* display:inline; */
+  text-align: center;
+  font-size: 18px;
+}
+
 @media only screen and (min-width:430px)
 {
     .itinerary_container{
       width:67%;
+    }
+
+    .header_container{
+      font-size: 20px;
+    }
+}
+
+@media only screen and (min-width:465px)
+{
+    .itinerary_container{
+      width:67%;
+    }
+
+    .header_container{
+      font-size: 22px;
     }
 }
 
@@ -89,12 +112,14 @@
     }
 }
 
-.header_container{
-  /* margin-bottom:20px; */
-  /* margin-left:20px; */
-  /* display:inline; */
-  text-align: center;
+@media only screen and (min-width:950px)
+{
+  .header_container{
+    font-size: 24px;
+  }
 }
+
+
 
 .row_header
 {
