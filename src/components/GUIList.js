@@ -103,7 +103,7 @@ export default function GUIList({childToParent})
      {
        if (checkCharacters(event))
        {
-          setTheText(event.target.value);
+          setTheText(event.target.value);            /* event.target.id also accessible */
           /* setAddInputClsName("add_input add_input_normal"); */
         }
        else
@@ -126,7 +126,7 @@ export default function GUIList({childToParent})
           icon: "",
           showCancelButton: true,
           confirmButtonColor: "#d33", // "#3085d6"
-          cancelButtonColor: "#3085d6",
+          cancelButtonColor: "#425187",
           confirmButtonText: "Yes, delete !"
         }).then((result) => {
           if (result.isConfirmed) {
@@ -140,7 +140,7 @@ export default function GUIList({childToParent})
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
-              icon: "success"
+              // icon: "success"
             });
           }
         });
@@ -184,6 +184,8 @@ export default function GUIList({childToParent})
 
            setEdit(true);
 
+           setAddInputClsName("add_input add_input_edit");
+
            childToParent(true);
  
           /* setTasks(tasks.map(tsk=>{
@@ -206,7 +208,7 @@ export default function GUIList({childToParent})
           setTasks(originalTasks.map(oTsk=>{   /* for every task */
             if (oTsk.id!==id)          /*if task is not the one with tsk.id===id*/
             {
-              return oTsk;             /*return it*/
+              return oTsk;             /*return it and leave it as it is*/
             }
             else{
               return {id:oTsk.id,name:theText,editing:false,checked:oTsk.checked};   /* else return a new object where name is 'theText' and  editing=false */
@@ -215,6 +217,7 @@ export default function GUIList({childToParent})
           );
           setTheText('');
           setEdit(false);
+          setAddInputClsName("add_input add_input_normal");
           childToParent(false);
      }
      
@@ -239,6 +242,7 @@ export default function GUIList({childToParent})
         ); */
         setTheText('');
         setEdit(false);
+        setAddInputClsName("add_input add_input_normal");
         childToParent(false);
      }
 

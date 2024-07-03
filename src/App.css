@@ -153,6 +153,11 @@ input:focus{
   border:1px solid gray;
 }
 
+.add_input_edit{
+  background-color:rgba(194, 214, 173, 0.384);
+  border:1px solid gray;
+}
+
 .add_input_error{
   background-color:#f7eced;
   color:#b60816; 
