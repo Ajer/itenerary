@@ -1,7 +1,7 @@
 import {taskList} from './taskList.js'
 import {useState,useEffect} from 'react';
 import ShowList from './ShowList';
-import DOMPurify from 'dompurify';
+// import DOMPurify from 'dompurify';
 import Swal from 'sweetalert2';
 
 
@@ -274,10 +274,7 @@ export default function GUIList({childToParent})
         childToParent(false);
      }
 
-    /*  function removeElement(htmlId)
-      {
-       document.getElementById(htmlId).style.display = "none";
-      } */
+    
 
      /* function updateSquares(index,cpy){
       setSquares(elems => {

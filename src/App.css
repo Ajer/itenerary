@@ -11,8 +11,9 @@
 }
 
 .App-header {
-  /* background:linear-gradient(135deg,rgb(194, 26, 152),#f80759); */
-  background:linear-gradient(135deg,rgb(63, 166, 250),#7c0812); 
+  background:linear-gradient(135deg,rgb(63, 166, 250),#7c0812);
+
+  /*background:linear-gradient(135deg,rgb(63,166,250),#fff);*/ 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -182,7 +183,9 @@ input:focus{
 }
 
 .add_input_edit{
-  background-color:rgba(194, 214, 173, 0.384);
+  /* background-color:rgba(194, 214, 173, 0.384); */
+
+  background:rgba(127, 192, 245, 0.2);
   border:1px solid gray;
 }
 
@@ -225,7 +228,9 @@ input:focus{
   border-radius:4px;
   padding:5px;
   margin-bottom:10px;
-  background-color: rgba(194, 214, 173, 0.384);
+  /* background-color: rgba(194, 214, 173, 0.384); */
+
+  background: rgba(127, 192, 245, 0.2);
 }
 
 

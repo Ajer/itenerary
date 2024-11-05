@@ -11,13 +11,13 @@ export default function Itinerary(){
           setEdit(childData);
      }
 
-    const editMark = (edit)?'/(edit)':'';
+    const editMark = (edit)?'/(edit)':'';   // const
     
     return(
         <>
          
           <div className="itinerary_container">           
-              
+            <a href="" type="button"><i class="lni lni-cog"></i></a>
             <Header className={"header_container"} city={'Prague'} editMark={editMark}/>
 
             <GUIList childToParent={childToParent} />
