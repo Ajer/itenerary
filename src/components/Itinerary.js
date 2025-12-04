@@ -15,10 +15,10 @@ export default function Itinerary(){
     
     return(
         <>
-         
+
           <div className="itinerary_container">           
             <a href="" type="button"><i class="lni lni-cog"></i></a>
-            <Header className={"header_container"} city={'Prague'} editMark={editMark}/>
+            <Header className={"header_container no_class"} city={'Prague'} editMark={editMark}/>
 
             <GUIList childToParent={childToParent} />
          </div>

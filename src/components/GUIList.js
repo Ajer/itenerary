@@ -188,7 +188,7 @@ export default function GUIList({childToParent})
 
            setAddInputClsName("add_input add_input_edit");
 
-           childToParent(true);
+           childToParent(true);   /* childToParent sends setEdits value out as an 'output param' */
  
           /* setTasks(tasks.map(tsk=>{
             if (tsk.id!==id)
@@ -245,7 +245,7 @@ export default function GUIList({childToParent})
           setEdit(false);
           setCheckChanged(false);
           setAddInputClsName("add_input add_input_normal");
-          childToParent(false);
+          childToParent(false);    /* childToParent sends setEdits value out as an 'output param' */
      }
      
      

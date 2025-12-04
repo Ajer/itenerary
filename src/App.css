@@ -53,6 +53,10 @@
   font-size: 18px;
 }
 
+.header{
+    text-align:center;
+}
+
 .button{
   height:30px;
   font-size:18px;  
@@ -61,6 +65,9 @@
   background-color:white;
   color:gray;
 }
+
+
+
 
 @media only screen and (max-width:295px)
 {
@@ -196,7 +203,8 @@ input:focus{
 }
 
 
-
+no_class{
+}
 
 .btn_corr{ /*.label_corr{*/
   margin-left:10px;
@@ -242,6 +250,7 @@ input:focus{
   display:inline;
   font-size: 12px;
   width:80px;
+
   /* margin-bottom:10px; */
   /*border:1px solid gray;
   border-radius:5px; */
